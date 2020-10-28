@@ -8,6 +8,7 @@ Proje Python3 ile çalışır. İlk olarak aşağıdaki komutları girmeniz gere
 ```
 python -m pip install -r requirements.txt
 python manage.py makemigrations
+python manage.py makemigrations api
 python manage.py migrate
 python manage.py createcachetable
 python manage.py ilce_kaydet
