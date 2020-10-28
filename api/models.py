@@ -19,22 +19,3 @@ class Ilce(models.Model):
 
     class Meta:
         verbose_name_plural = "İlçeler"
-
-class Vakit(models.Model):
-    __periyod__ = [
-        ("aylik","Aylık"),
-        ("haftalik","Hatfalık"),
-    ]
-    
-    ilce = models.ForeignKey(Ilce,on_delete=models.CASCADE)
-    periyod = models.CharField(max_length=100,choices=__periyod__)
-    tarih = models.DateTimeField()
-    imsak = models.TimeField()
-    gunes = models.TimeField()
-    ogle = models.TimeField()
-    ikindi = models.TimeField()
-    aksam = models.TimeField()
-    yatsi = models.TimeField()
-
-    class Meta:
-        verbose_name_plural = "Vakitler"
