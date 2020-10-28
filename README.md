@@ -14,9 +14,9 @@ python manage.py createcachetable
 
 # Kullanım
 
-Sehirlerin listesi: `/api/sehirler`
-Bir sehre ait ilcelerin listesi: `/api/ilceler/sehir_id`
-Bir ilceye ait 1 aylık namaz vakitlerinin listesi: `/api/vakitler/ilce_id`
+Sehirlerin listesi: `/api/sehirler`<br/>
+Bir sehre ait ilcelerin listesi: `/api/ilceler/sehir_id`<br/>
+Bir ilceye ait 1 aylık namaz vakitlerinin listesi: `/api/vakitler/ilce_id`<br/><br/>
 
 Bir şehrin merkezi de ilçe olarak ele alınmıştır. Örneğin Adana'nın merkez ilçesinin namaz vakitleri `/api/vakitler/9146` ile elde edilebilir. 
 
