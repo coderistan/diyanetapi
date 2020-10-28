@@ -14,6 +14,8 @@ python manage.py createcachetable
 
 # Kullanım
 
+Server'ı başlatmak için `python manage.py runserver` komutu girilir.
+
 Sehirlerin listesi: `/api/sehirler`<br/>
 Bir sehre ait ilcelerin listesi: `/api/ilceler/sehir_id`<br/>
 Bir ilceye ait 1 aylık namaz vakitlerinin listesi: `/api/vakitler/ilce_id`<br/><br/>
