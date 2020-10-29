@@ -1,12 +1,10 @@
-from django.shortcuts import render
 from django.views.decorators.cache import cache_page
-from rest_framework.views import Request, Response
+from rest_framework.views import Response
 from rest_framework.decorators import api_view
 from api.serializers import SehirSerializer,IlceSerializer,VakitSerializer
 from api import models
 from api import utils
 from diyanetapi.settings import CACHES
-# Create your views here.
 
 timeout = CACHES.get("default").get("TIMEOUT")
 
