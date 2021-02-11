@@ -4,6 +4,7 @@ import requests
 import bs4
 import re
 from api.models import Sehir,Ilce
+import sys
 
 class Command(BaseCommand):
     def get_sehirler(self):
@@ -20,7 +21,8 @@ class Command(BaseCommand):
             sehir = re.search(FORMAT,s.content.decode("utf-8"))
             if(sehir):
                 sehir = sehir.group(1)
-                print("{} için bilgiler alınıyor".format(sehir))
+                sys.stdout.write("\r{} için bilgiler alınıyor {:<10}".format(sehir,""))
+                sys.stdout.flush()
                 sayac += 1
             else:
                 exit(0)
@@ -35,7 +37,7 @@ class Command(BaseCommand):
                     break
             sehirler[sehir] = {i.text:i.get("value") for i in ilceler}
 
-        print("Toplam",sayac,"şehir")
+        print("\nToplam",sayac,"şehir")
         return sehirler
 
     def handle(self,*args,**options):
@@ -49,7 +51,7 @@ class Command(BaseCommand):
             x.sehir_adi = i.lower()
             x.save()
 
-        for i in sehirler:
+        for index,i in enumerate(sehirler):
             sehir = Sehir.objects.get(sehir_adi=i.lower())
             ilceler = sehirler[i]
 
@@ -59,4 +61,7 @@ class Command(BaseCommand):
                 ilce.ilce_adi = "merkez" if sehir.sehir_adi == k.lower() else k.lower()
                 ilce.ilce_id = ilceler[k]
                 ilce.save()
-                print("{} ili {} ilçesi kaydedildi".format(sehir.sehir_adi,k))
+                sys.stdout.write("\r({:>2}) {} ili {} ilçesi kaydedildi{:<20}".format(index+1,sehir.sehir_adi,k,""))
+                sys.stdout.flush()
+
+        print("\nTüm işlemler tamam!")
